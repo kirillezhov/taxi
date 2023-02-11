@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 
 import { User } from '../users/user.entity';
 import { City } from '../cities/city.entity';
+import { Price } from '../prices/price.entity';
 
 config();
 
@@ -16,7 +17,7 @@ export default new DataSource({
     username: configService.get('PG_USER'),
     password: configService.get('PG_PASSWORD'),
     database: configService.get('PG_DATABASE'),
-    entities: [User, City],
+    entities: [User, City, Price],
     synchronize: true,
     migrations: ['./src/db/migrations/*.ts']
 });
