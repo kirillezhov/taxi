@@ -19,7 +19,7 @@ export class User {
     @Column({ default: true })
     isActive: boolean;
 
-    @Column({ type: 'timestamptz' })
+    @CreateDateColumn({ type: 'timestamptz' })
     createdAt: Date;
 
     @Column({
