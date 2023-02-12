@@ -1,5 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
+import Roles from './roles';
+
 @Entity()
 export class User {
     @PrimaryGeneratedColumn('increment')
@@ -19,4 +21,12 @@ export class User {
 
     @Column({ type: 'timestamptz' })
     createdAt: Date;
+
+    @Column({
+        type: 'int',
+        enum: Roles,
+        default: Roles.USER,
+        nullable: false
+    })
+    role: Roles;
 }
