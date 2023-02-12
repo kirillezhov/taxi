@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './db/database.module';
 import { CityModule } from './cities/cities.module';
 import { PriceModule } from './prices/price.module';
+import {AddressesModule} from './addresses/addresses.module';
 
 @Module({
 
@@ -13,6 +14,7 @@ import { PriceModule } from './prices/price.module';
     UsersModule,
     CityModule,
     PriceModule,
+    AddressesModule
   ],
   controllers: [AppController],
   providers: [AppService],
