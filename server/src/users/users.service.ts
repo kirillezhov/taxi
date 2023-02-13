@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
@@ -6,6 +6,8 @@ import { UserDto } from './user.dto';
 
 @Injectable()
 export class UsersService {
+    private readonly logger = new Logger(UsersService.name);
+
     constructor(
         @InjectRepository(User)
         private usersRepository: Repository<User>,
@@ -23,7 +25,7 @@ export class UsersService {
         await this.usersRepository.delete(id);
     }
 
-    create(model: UserDto): Promise<User> {
+    async create(model: UserDto): Promise<User> {
         const user = new User();
 
         user.role = model.role;
@@ -31,6 +33,8 @@ export class UsersService {
         user.lastName = model.lastName;
         user.phoneNumber = model.phoneNumber;
         user.isActive = true;
+
+        this.logger.debug(`User [${model.firstName}] created!`);
 
         return this.usersRepository.save(user);
     }

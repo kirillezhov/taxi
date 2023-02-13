@@ -3,17 +3,17 @@ import { UsersService } from './users.service';
 import { User } from './user.entity';
 import { UserDto } from './user.dto';
 
-@Controller()
+@Controller('Users')
 export class UsersController {
     constructor(private readonly userService: UsersService) {}
 
-    @Get()
+    @Get('GetAll')
     getAll(): Promise<User[]> {
         return this.userService.findAll();
     }
 
-    @Post()
-    create(@Body() user: UserDto): Promise<User> {
-        return this.userService.create(user);
+    @Post('Create')
+    async create(@Body() user: UserDto): Promise<User> {
+        return await this.userService.create(user);
     }
 }
