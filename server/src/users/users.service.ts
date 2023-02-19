@@ -1,5 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { isNil } from '@nestjs/common/utils/shared.utils';
+
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { UserDto } from './user.dto';
@@ -26,6 +28,16 @@ export class UsersService {
     }
 
     async create(model: UserDto): Promise<User> {
+        const foundUser = await this.usersRepository.findOneBy({
+            phoneNumber: model.phoneNumber
+        });
+
+        if (!isNil(foundUser)) {
+            this.logger.error(`User [${model.phoneNumber}] already exists`);
+
+            return foundUser;
+        }
+
         const user = new User();
 
         user.role = model.role;
@@ -34,7 +46,7 @@ export class UsersService {
         user.phoneNumber = model.phoneNumber;
         user.isActive = true;
 
-        this.logger.debug(`User [${model.firstName}] created!`);
+        this.logger.log(`User [${model.firstName}] created!`);
 
         return this.usersRepository.save(user);
     }
