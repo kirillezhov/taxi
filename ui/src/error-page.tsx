@@ -5,7 +5,8 @@ function ErrorPage() {
     const error = useRouteError();
 
     if (!isRouteErrorResponse(error)) {
-        return <p>Unknown error</p>;
+        // @ts-ignore
+        return <p>{error.message}</p>;
     }
 
     return (
