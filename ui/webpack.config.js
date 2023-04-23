@@ -20,13 +20,24 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.css$/,
-                use: [ 'style-loader', 'css-loader' ]
+                test: /\.module.(s[ac]ss)$/i,
+                use: [ 'style-loader', 'css-loader', {
+                    loader: 'sass-loader',
+                    options: {
+                        additionalData: `@use '${path.resolve(__dirname, 'src', '_global.scss')}' as *;`,
+                    },
+                }]
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                exclude: /\.module.(s[ac]ss)$/,
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-                exclude: /node_modules/,
-                use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
+                //exclude: /node_modules/,
+                //use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
+                type: 'asset/resource',
             }
         ],
     },
@@ -60,7 +71,7 @@ module.exports = {
         ),
     ],
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js', '.scss'],
     },
     output: {
         filename: 'bundle.js',

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { replace, toString } from 'lodash';
 
-import { Button, Layout, Space, Form, Modal, Input, InputNumber } from 'antd';
-import { Content, Header } from 'antd/es/layout/layout';
+import Header from '../containers/Header';
+import {Button, Layout, Space, Form, Modal, Input, InputNumber, Divider, Typography, Row} from 'antd';
+import { Content, Footer } from 'antd/es/layout/layout';
+
+import styles from './Root.module.scss';
 
 interface RegistrationFormProps {
     name: string;
@@ -35,13 +38,15 @@ function Root() {
 
     return (
         <Layout>
-            <Header>
-                <Space>
-                    <Button>Вход</Button>
-                    <Button onClick={showModal}>Регистрация</Button>
-                </Space>
-            </Header>
-            <Content></Content>
+            <Header />
+            <Content className={styles.mainContent}>
+                <div className={styles.overlay}></div>
+            </Content>
+            <Footer className={styles.footer}>
+                <Content className={styles.content}>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </Content>
+            </Footer>
 
             <Modal
                 title="Регистрация"

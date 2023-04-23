@@ -1,0 +1,42 @@
+@use '../global' as *;
+@use '../colors';
+
+.header {
+  background: colors.$white !important;
+  margin: 0;
+  color: colors.$default;
+
+  .content {
+    @include content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menuItem {
+    margin-left: 55px;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .logo {
+    font-size: 48px;
+    font-weight: 500;
+    height: 56px;
+    line-height: 53px;
+  }
+}
+
+.icon {
+  color: colors.$primary;
+}
+
+.communication {
+  display: flex;
+  align-items: center;
+  padding-right: 42px;
+
+  .socialNetwork:not(:first-child) {
+    padding-left: 16px;
+  }
+}

@@ -1,0 +1,38 @@
+@use '../global' as *;
+@use '../colors';
+
+//.content {
+//  width: $content-width;
+//  display: flex;
+//  align-items: center;
+//  margin: auto;
+//  padding: 0 104px;
+//  background-color: red;
+//}
+
+.mainContent {
+  height: 808px;
+  background-image: url('../../public/background.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .overlay {
+    position: absolute;
+    background-image: url('../../public/overlay.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 808px;
+  }
+}
+
+.footer {
+  background: colors.$default !important;
+  color: colors.$white !important;
+
+  .content {
+    @include content;
+  }
+}
