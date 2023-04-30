@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { Root } from './routes';
 import ErrorPage from './error-page';
+import CustomConfigProvider from './components/CustomConfigProvider';
 
 const router = createBrowserRouter([
     {
@@ -23,7 +24,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+      <CustomConfigProvider>
+          <RouterProvider router={router} />
+      </CustomConfigProvider>
   </React.StrictMode>
 );
 

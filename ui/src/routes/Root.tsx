@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { replace, toString } from 'lodash';
 
 import Header from '../containers/Header';
-import {Button, Layout, Space, Form, Modal, Input, InputNumber } from 'antd';
+import { Button, Layout, Space, Form, Modal, Input, InputNumber, Typography } from 'antd';
 import { Content, Footer } from 'antd/es/layout/layout';
+import { PhoneFilled } from '@ant-design/icons';
 
 import styles from './Root.module.scss';
 
@@ -41,6 +42,22 @@ function Root() {
             <Header />
             <Content className={styles.mainContent}>
                 <div className={styles.overlay}></div>
+                <div className={styles.actionBlock}>
+                    <div className={styles.description}>
+                        <Typography.Title>Закажите ОНЛАЙН!</Typography.Title>
+                        <Typography.Paragraph className={styles.paragraph}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</Typography.Paragraph>
+                        <div>
+                            <Space align="center">
+                                <PhoneFilled style={{ fontSize: '35px' }} />
+                                <Typography.Text className={styles.phone}>+7(495) 331 33 67</Typography.Text>
+                            </Space>
+                        </div>
+                        <div className={styles.buttonBlock}>
+                            <Button size="large" className={styles.button} block>ПОЗВОНИТЬ</Button>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
             </Content>
             <Footer className={styles.footer}>
                 <div className={styles.content}>
@@ -96,7 +113,7 @@ function Root() {
                     >
                         <Space>
                             <InputNumber controls={false} style={{ width: '100%' }} />
-                            <Button>Отправить код</Button>
+                            <Button size="middle">Отправить код</Button>
                         </Space>
                     </Form.Item>
                 </Form>

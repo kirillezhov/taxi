@@ -28,6 +28,42 @@
   }
 }
 
+.actionBlock {
+  @include content;
+
+  position: relative;
+  padding: 40px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  .description {
+    color: colors.$white;
+    max-width: 500px;
+
+    .paragraph {
+      font-size: 16px;
+    }
+
+    .phone {
+      font-weight: 700;
+      font-size: 32px;
+    }
+  }
+
+  .buttonBlock {
+    max-width: 255px;
+    margin-top: 30px;
+  }
+
+  .button {
+    font-weight: 600;
+  }
+}
+
 .footer {
   background: colors.$default !important;
   color: colors.$white !important;
