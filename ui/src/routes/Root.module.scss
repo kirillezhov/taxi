@@ -41,6 +41,7 @@
   height: 100%;
 
   .description {
+    width: 50%;
     color: colors.$white;
     max-width: 500px;
 
@@ -72,4 +73,9 @@
     @include content;
     text-align: center;
   }
+}
+
+.formContainer {
+  width: 50%;
+  max-width: 410px;
 }

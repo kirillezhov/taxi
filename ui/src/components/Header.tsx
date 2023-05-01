@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import {Row, Layout, Space} from 'antd';
+import { Row, Layout, Space } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
-import {TelegramIcon, VKIcon} from '../components/icons';
+import { TelegramIcon, VKIcon } from './icons';
 
 import styles from './Header.module.scss';
 
